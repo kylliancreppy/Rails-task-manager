@@ -1,0 +1,18 @@
+<h1>My tasks</h1>
+<ul>
+  <% @tasks.each do |task| %>
+  <div class="form-check">
+  <%= link_to icon('far', 'trash-alt'),
+            task_path(task),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+      <input type="checkbox" <%="checked" if task.completed %>>
+   <%= link_to task.title, task_path(task) %>
+    </div>
+  <% end %>
+</ul>
+<div class="new-link">
+<%= link_to new_path do %>
+<p><%= icon('fas', 'plus') %> Add a new task</p>
+<%end%>
+</div>
